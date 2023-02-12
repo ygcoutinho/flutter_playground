@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 enum PopUpMenuPages {
   container,
   mediaQuery,
+  layoutBuilder,
 }
 
 class _HomePageState extends State<HomePage> {
@@ -32,6 +33,9 @@ class _HomePageState extends State<HomePage> {
                 case PopUpMenuPages.mediaQuery:
                   Navigator.of(context).pushNamed('/media_query');
                   break;
+                case PopUpMenuPages.layoutBuilder:
+                  Navigator.of(context).pushNamed('/layout_builder');
+                  break;
                 default:
               }
             },
@@ -43,7 +47,11 @@ class _HomePageState extends State<HomePage> {
               const PopupMenuItem(
                 value: PopUpMenuPages.mediaQuery,
                 child: Text('Media Query'),
-              )
+              ),
+              const PopupMenuItem(
+                value: PopUpMenuPages.layoutBuilder,
+                child: Text('LayoutBuilder'),
+              ),
             ],
           ),
         ],
@@ -60,6 +68,10 @@ class _HomePageState extends State<HomePage> {
               onPressed: () => Navigator.of(context).pushNamed('/media_query'),
               child: const Text('Media Query'),
             ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pushNamed('/layout_builder'),
+              child: const Text('Layout Builder'),
+            )
           ],
         ),
       ),
