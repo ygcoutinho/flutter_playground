@@ -3,6 +3,7 @@ import 'package:flutter_playground/pages/buttons/buttons_page.dart';
 import 'package:flutter_playground/pages/container/container_page.dart';
 import 'package:flutter_playground/pages/home/home_page.dart';
 import 'package:flutter_playground/pages/layout_builder/layout_builder_page.dart';
+import 'package:flutter_playground/pages/list_view/list_view_page.dart';
 import 'package:flutter_playground/pages/media_query/media_query_page.dart';
 
 void main() {
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         '/media_query': (_) => const MediaQueryPage(),
         '/layout_builder': (_) => const LayoutBuilderPage(),
         '/butons': (_) => const ButtonsPage(),
+        '/listview': (_) => const ListViewPage(),
       },
     );
   }

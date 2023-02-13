@@ -14,6 +14,7 @@ enum PopUpMenuPages {
   mediaQuery,
   layoutBuilder,
   buttons,
+  listView,
 }
 
 class _HomePageState extends State<HomePage> {
@@ -40,6 +41,9 @@ class _HomePageState extends State<HomePage> {
                 case PopUpMenuPages.buttons:
                   Navigator.of(context).pushNamed('/butons');
                   break;
+                case PopUpMenuPages.listView:
+                  Navigator.of(context).pushNamed('/listview');
+                  break;
                 default:
               }
             },
@@ -59,7 +63,11 @@ class _HomePageState extends State<HomePage> {
               const PopupMenuItem(
                 value: PopUpMenuPages.buttons,
                 child: Text('Butons'),
-              )
+              ),
+              const PopupMenuItem(
+                value: PopUpMenuPages.listView,
+                child: Text('List View'),
+              ),
             ],
           ),
         ],
@@ -83,7 +91,11 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               onPressed: () => Navigator.of(context).pushNamed('/butons'),
               child: const Text('Butons'),
-            )
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pushNamed('/listview'),
+              child: const Text('List View'),
+            ),
           ],
         ),
       ),
