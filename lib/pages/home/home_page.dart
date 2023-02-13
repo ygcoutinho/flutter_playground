@@ -15,6 +15,7 @@ enum PopUpMenuPages {
   layoutBuilder,
   buttons,
   listView,
+  showDialog,
 }
 
 class _HomePageState extends State<HomePage> {
@@ -44,6 +45,9 @@ class _HomePageState extends State<HomePage> {
                 case PopUpMenuPages.listView:
                   Navigator.of(context).pushNamed('/listview');
                   break;
+                case PopUpMenuPages.showDialog:
+                  Navigator.of(context).pushNamed('/dialogs');
+                  break;
                 default:
               }
             },
@@ -66,6 +70,10 @@ class _HomePageState extends State<HomePage> {
               ),
               const PopupMenuItem(
                 value: PopUpMenuPages.listView,
+                child: Text('List View'),
+              ),
+              const PopupMenuItem(
+                value: PopUpMenuPages.showDialog,
                 child: Text('List View'),
               ),
             ],
@@ -95,6 +103,10 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               onPressed: () => Navigator.of(context).pushNamed('/listview'),
               child: const Text('List View'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pushNamed('/dialogs'),
+              child: const Text('Dialogs'),
             ),
           ],
         ),
