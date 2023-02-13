@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +14,7 @@ enum PopUpMenuPages {
   buttons,
   listView,
   showDialog,
+  snackbar,
 }
 
 class _HomePageState extends State<HomePage> {
@@ -48,6 +47,9 @@ class _HomePageState extends State<HomePage> {
                 case PopUpMenuPages.showDialog:
                   Navigator.of(context).pushNamed('/dialogs');
                   break;
+                case PopUpMenuPages.snackbar:
+                  Navigator.of(context).pushNamed('/snackbar');
+                  break;
                 default:
               }
             },
@@ -76,6 +78,10 @@ class _HomePageState extends State<HomePage> {
                 value: PopUpMenuPages.showDialog,
                 child: Text('List View'),
               ),
+              const PopupMenuItem(
+                value: PopUpMenuPages.snackbar,
+                child: Text('Snackbar'),
+              )
             ],
           ),
         ],
@@ -107,6 +113,10 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               onPressed: () => Navigator.of(context).pushNamed('/dialogs'),
               child: const Text('Dialogs'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pushNamed('/snackbar'),
+              child: const Text('Snackbar'),
             ),
           ],
         ),
