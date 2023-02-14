@@ -15,6 +15,7 @@ enum PopUpMenuPages {
   listView,
   showDialog,
   snackbar,
+  forms,
 }
 
 class _HomePageState extends State<HomePage> {
@@ -50,6 +51,9 @@ class _HomePageState extends State<HomePage> {
                 case PopUpMenuPages.snackbar:
                   Navigator.of(context).pushNamed('/snackbar');
                   break;
+                case PopUpMenuPages.forms:
+                  Navigator.of(context).pushNamed('/forms');
+                  break;
                 default:
               }
             },
@@ -76,11 +80,15 @@ class _HomePageState extends State<HomePage> {
               ),
               const PopupMenuItem(
                 value: PopUpMenuPages.showDialog,
-                child: Text('List View'),
+                child: Text('Dialogs'),
               ),
               const PopupMenuItem(
                 value: PopUpMenuPages.snackbar,
                 child: Text('Snackbar'),
+              ),
+              const PopupMenuItem(
+                value: PopUpMenuPages.forms,
+                child: Text('Forms'),
               )
             ],
           ),
@@ -117,6 +125,10 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               onPressed: () => Navigator.of(context).pushNamed('/snackbar'),
               child: const Text('Snackbar'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pushNamed('/forms'),
+              child: const Text('Forms'),
             ),
           ],
         ),
