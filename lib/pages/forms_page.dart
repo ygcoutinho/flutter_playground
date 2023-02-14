@@ -41,10 +41,13 @@ class _FormsPageState extends State<FormsPage> {
                         maxLength: 250,
                         validator: (String? value) {
                           if (value == null || !value.contains('@') || !value.contains('.')) {
+                            debugPrint('passou por aqui');
                             return 'Error';
                           }
+                          debugPrint('passou por aqui 2');
                           return null;
                         },
+
                         decoration: const InputDecoration(
                           labelText: 'E-mail',
                           hintText: 'example@example.com',
@@ -55,17 +58,15 @@ class _FormsPageState extends State<FormsPage> {
                       ),
                     ),
                     const SizedBox(height: 30),
-                    TextFormField()
                   ],
                 ),
               ),
               ElevatedButton(
                 onPressed: () {
                   var validate = formKey.currentState?.validate() ?? false;
+                  debugPrint(validate.toString());
                   if (validate) {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Lala')));
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Lala')));
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ok!')));
                   }
                 },
                 child: const Text('Validate'),
