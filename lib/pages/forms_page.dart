@@ -8,12 +8,12 @@ class FormsPage extends StatefulWidget {
 }
 
 class _FormsPageState extends State<FormsPage> {
-  var userInputEmail = TextEditingController();
-  var formKey = GlobalKey<FormState>();
+  var _userInputEmail = TextEditingController();
+  var _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    userInputEmail.dispose();
+    _userInputEmail.dispose();
     super.dispose();
   }
 
@@ -29,43 +29,55 @@ class _FormsPageState extends State<FormsPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Form(
+                key: _formKey,
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextFormField(
-                        controller: userInputEmail,
-                        key: formKey,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        //maxLines: null,
-                        maxLength: 250,
-                        validator: (String? value) {
-                          if (value == null || !value.contains('@') || !value.contains('.')) {
-                            debugPrint('passou por aqui');
-                            return 'Error';
-                          }
-                          debugPrint('passou por aqui 2');
-                          return null;
-                        },
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            controller: _userInputEmail,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            //maxLines: null,
+                            maxLength: 250,
+                            validator: (String? value) {
+                              const pattern = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
+                                  r'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-'
+                                  r'\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*'
+                                  r'[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4]'
+                                  r'[0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9]'
+                                  r'[0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\'
+                                  r'x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])';
+                              final regex = RegExp(pattern);
+                              if (value == null || value.isEmpty) {
+                                return 'The field cannot be empty';
+                              }
+                              if (!regex.hasMatch(value)) {
+                                return 'Enter a valid e-mail';
+                              }
 
-                        decoration: const InputDecoration(
-                          labelText: 'E-mail',
-                          hintText: 'example@example.com',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(3)),
+                              return null;
+                            },
+
+                            decoration: const InputDecoration(
+                              labelText: 'E-mail',
+                              hintText: 'example@example.com',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(3)),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        const SizedBox(height: 30),
+                      ],
                     ),
-                    const SizedBox(height: 30),
                   ],
                 ),
               ),
               ElevatedButton(
                 onPressed: () {
-                  var validate = formKey.currentState?.validate() ?? false;
-                  debugPrint(validate.toString());
-                  if (validate) {
+                  if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ok!')));
                   }
                 },
