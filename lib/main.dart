@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/pages/buttons/buttons_page.dart';
 import 'package:flutter_playground/pages/container/container_page.dart';
 import 'package:flutter_playground/pages/dialogs/dialogs_page.dart';
-import 'package:flutter_playground/pages/forms_page.dart';
+import 'package:flutter_playground/forms/forms_page.dart';
 import 'package:flutter_playground/pages/home/home_page.dart';
+import 'package:flutter_playground/pages/json_read/json_read_page.dart';
 import 'package:flutter_playground/pages/layout_builder/layout_builder_page.dart';
 import 'package:flutter_playground/pages/list_view/list_view_page.dart';
 import 'package:flutter_playground/pages/media_query/media_query_page.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/dialogs': (_) => const DialogsPage(),
         '/snackbar': (_) => const SnackbarPage(),
         '/forms': (_) => const FormsPage(),
+        '/jsonread': (_) => const JsonReadPage(),
       },
     );
   }

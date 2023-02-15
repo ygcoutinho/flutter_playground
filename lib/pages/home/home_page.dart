@@ -16,6 +16,7 @@ enum PopUpMenuPages {
   showDialog,
   snackbar,
   forms,
+  jsonread,
 }
 
 class _HomePageState extends State<HomePage> {
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text('Flutter Playground'),
         centerTitle: true,
         actions: [
           PopupMenuButton<PopUpMenuPages>(
@@ -53,6 +54,9 @@ class _HomePageState extends State<HomePage> {
                   break;
                 case PopUpMenuPages.forms:
                   Navigator.of(context).pushNamed('/forms');
+                  break;
+                case PopUpMenuPages.jsonread:
+                  Navigator.of(context).pushNamed('/jsonread');
                   break;
                 default:
               }
@@ -89,48 +93,58 @@ class _HomePageState extends State<HomePage> {
               const PopupMenuItem(
                 value: PopUpMenuPages.forms,
                 child: Text('Forms'),
+              ),
+              const PopupMenuItem(
+                value: PopUpMenuPages.jsonread,
+                child: Text('Json Read'),
               )
             ],
           ),
         ],
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/container'),
-              child: const Text('Container Page'),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/media_query'),
-              child: const Text('Media Query'),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/layout_builder'),
-              child: const Text('Layout Builder'),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/butons'),
-              child: const Text('Butons'),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/listview'),
-              child: const Text('List View'),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/dialogs'),
-              child: const Text('Dialogs'),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/snackbar'),
-              child: const Text('Snackbar'),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/forms'),
-              child: const Text('Forms'),
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/container'),
+                child: const Text('Container Page'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/media_query'),
+                child: const Text('Media Query'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/layout_builder'),
+                child: const Text('Layout Builder'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/butons'),
+                child: const Text('Butons'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/listview'),
+                child: const Text('List View'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/dialogs'),
+                child: const Text('Dialogs'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/snackbar'),
+                child: const Text('Snackbar'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/forms'),
+                child: const Text('Forms'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/jsonread'),
+                child: const Text('Json Read'),
+              ),
+            ],
+          ),
         ),
       ),
     );
