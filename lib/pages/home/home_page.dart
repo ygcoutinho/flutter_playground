@@ -17,6 +17,7 @@ enum PopUpMenuPages {
   snackbar,
   forms,
   jsonread,
+  bottombar,
 }
 
 class _HomePageState extends State<HomePage> {
@@ -58,6 +59,9 @@ class _HomePageState extends State<HomePage> {
                 case PopUpMenuPages.jsonread:
                   Navigator.of(context).pushNamed('/jsonread');
                   break;
+                case PopUpMenuPages.bottombar:
+                  Navigator.of(context).pushNamed('/bottombar');
+                  break;
                 default:
               }
             },
@@ -97,7 +101,11 @@ class _HomePageState extends State<HomePage> {
               const PopupMenuItem(
                 value: PopUpMenuPages.jsonread,
                 child: Text('Json Read'),
-              )
+              ),
+              const PopupMenuItem(
+                value: PopUpMenuPages.bottombar,
+                child: Text('Botton Nav Bar'),
+              ),
             ],
           ),
         ],
@@ -142,6 +150,10 @@ class _HomePageState extends State<HomePage> {
               ElevatedButton(
                 onPressed: () => Navigator.of(context).pushNamed('/jsonread'),
                 child: const Text('Json Read'),
+              ),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/bottombar'),
+                child: const Text('Bottom Nav Bar'),
               ),
             ],
           ),
